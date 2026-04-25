@@ -18,7 +18,7 @@ const autoReply = (msg: string): string => {
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [msgs, setMsgs] = useState<Msg[]>([
-    { role: "bot", text: "Hi! Welcome to Losode 👋 How can I help you today?" },
+    { role: "bot", text: "Hi! Welcome to Losode! How can I help you today?" },
   ]);
   const [input, setInput] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
