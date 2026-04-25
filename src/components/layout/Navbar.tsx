@@ -66,38 +66,51 @@ export default function Navbar() {
       <header className="bg-[#1A1A1A] sticky top-0 z-50">
         {/* Row 1: Gender tabs + Logo + Icons */}
         <div className="border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14">
-            {/* Gender tabs */}
+          {/* Increased height on tablet (md) and desktop (lg) to fit bigger logo */}
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20 lg:h-24">
+            
+            {/* LEFT SIDE: Mobile Hamburger OR Desktop Gender tabs */}
             <div className="flex items-center gap-6">
-              {["Women", "Men", "Kids"].map(g => (
-                <Link
-                  key={g}
-                  href={`/products?gender=${g.toLowerCase()}`}
-                  className={`text-sm font-semibold tracking-wide transition-colors ${
-                    pathname.includes(g.toLowerCase())
-                      ? "text-white border-b-2 border-white pb-0.5"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  {g}
-                </Link>
-              ))}
+              {/* Mobile hamburger (Moved to left to balance layout) */}
+              <button onClick={() => setMobileOpen(true)} className="text-white md:hidden" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+              </button>
+
+              {/* Gender tabs (Hidden on mobile to prevent logo overlap) */}
+              <div className="hidden md:flex items-center gap-6">
+                {["Women", "Men", "Kids"].map(g => (
+                  <Link
+                    key={g}
+                    href={`/products?gender=${g.toLowerCase()}`}
+                    className={`text-sm font-semibold tracking-wide transition-colors ${
+                      pathname.includes(g.toLowerCase())
+                        ? "text-white border-b-2 border-white pb-0.5"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {g}
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            {/* Logo — centered */}
+            {/* CENTER: Logo (Responsive sizing) */}
             <Link href="/" className="absolute left-1/2 -translate-x-1/2">
               <Image
                 src="/og-image.png"
                 alt="Losode Logo"
-                width={48}
-                height={48}
+                width={100} // Increased base size
+                height={100}
                 priority
-                className="object-contain"
+                // Scaling classes: w-12 on mobile, w-20 on tablet, w-24 on desktop
+                className="object-contain w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 transition-all duration-300"
               />
             </Link>
 
-            {/* Icons */}
-            <div className="flex items-center gap-5">
+            {/* RIGHT SIDE: Icons */}
+            <div className="flex items-center gap-4 md:gap-5">
               {/* Search */}
               {searchOpen ? (
                 <div className="flex items-center gap-2 border-b border-white/40 pb-0.5">
@@ -113,25 +126,25 @@ export default function Navbar() {
                       if (e.key === "Escape") { setSearchOpen(false); setSearchVal(""); }
                     }}
                     placeholder="Search..."
-                    className="bg-transparent text-white text-sm placeholder-gray-400 outline-none w-36"
+                    className="bg-transparent text-white text-sm placeholder-gray-400 outline-none w-32 md:w-36"
                   />
                   <button onClick={() => { setSearchOpen(false); setSearchVal(""); }} className="text-gray-400 hover:text-white text-xs">✕</button>
                 </div>
               ) : (
                 <button onClick={() => setSearchOpen(true)} className="text-white hover:text-[#C8A96E] transition-colors" aria-label="Search">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                 </button>
               )}
 
               {/* Account */}
               <button className="text-white hover:text-[#C8A96E] transition-colors hidden sm:block" aria-label="Account">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </button>
 
               {/* Wishlist */}
               <Link href="/favorites" className="text-white hover:text-[#C8A96E] transition-colors relative" aria-label="Wishlist">
                 <Badge count={favCount} size="small" color="#C8A96E" offset={[4, -4]}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                   </svg>
                 </Badge>
@@ -140,16 +153,11 @@ export default function Navbar() {
               {/* Cart */}
               <Link href="/cart" className="text-white hover:text-[#C8A96E] transition-colors" aria-label="Cart">
                 <Badge count={cartCount} size="small" color="#C8A96E" offset={[4, -4]}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
                     <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
                   </svg>
                 </Badge>
               </Link>
-
-              {/* Mobile hamburger */}
-              <button onClick={() => setMobileOpen(true)} className="text-white lg:hidden" aria-label="Menu">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-              </button>
             </div>
           </div>
         </div>
@@ -176,15 +184,15 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-[150]">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setMobileOpen(false)} />
-          <div className="absolute left-0 top-0 bottom-0 w-72 bg-[#1A1A1A] flex flex-col">
+        <div className="fixed inset-0 z-[150] lg:hidden">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={() => setMobileOpen(false)} />
+          <div className="absolute left-0 top-0 bottom-0 w-72 bg-[#1A1A1A] flex flex-col shadow-2xl">
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
               <Image
                 src="/og-image.png"
                 alt="Losode Logo"
-                width={40}
-                height={40}
+                width={48}
+                height={48}
                 className="object-contain"
               />
               <button onClick={() => setMobileOpen(false)} className="text-gray-400 hover:text-white text-xl">✕</button>
