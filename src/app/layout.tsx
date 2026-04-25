@@ -8,23 +8,36 @@ import CookieBanner from "@/components/ui/CookieBanner";
 import Footer from "@/components/layout/Footer";
 import ChatWidget from "@/components/ui/ChatWidget";
 
-
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000/"), 
+  metadataBase: new URL("https://losode.netlify.app"), 
   title: { default: "Losode - Fashion for Everyone", template: "%s | Losode" },
   description: "Shop the latest fashion for men, women and kids. Free delivery on orders over $100.",
   keywords: ["fashion", "clothing", "shop", "losode", "online store"],
+  
+  // 1. ADDED ICONS PROPERTY HERE
+  icons: {
+    icon: "/og-image.png",
+    apple: "/og-image.png", // Ensures it looks good if saved to an iOS home screen
+  },
+
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "http://localhost:3000/",
+    url: "https://losode.netlify.app",
     siteName: "Losode",
     title: "Losode - Fashion for Everyone",
     description: "Shop the latest fashion for men, women and kids.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Losode" }],
+    images: [
+      { 
+        url: "/og-image.png", 
+        width: 1200, 
+        height: 630, 
+        alt: "Losode Preview Image" 
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",

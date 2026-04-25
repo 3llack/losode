@@ -2,23 +2,23 @@
 
 A modern, feature-rich e-commerce platform built with Next.js 16 and React 19. Losode offers a curated shopping experience for fashion and lifestyle products with advanced filtering, cart management, and secure payment integration.
 
-## 🎯 Overview
+## Overview
 
 Losode is a full-featured e-commerce application that showcases fashion products with an intuitive user interface. The platform integrates with external APIs to fetch product data and supports secure online payments through Paystack.
 
 **Live Features:**
-- 🛍️ Browse thousands of products across multiple categories
-- 🔍 Advanced search and filtering (by category, price range)
-- ❤️ Wishlist/Favorites management
-- 🛒 Shopping cart with persistent state
-- 💳 Secure checkout with Paystack payment integration
-- 📱 Fully responsive design (mobile, tablet, desktop)
-- 🎨 Modern UI with Tailwind CSS and Ant Design
-- 🍪 Cookie consent management
-- 📧 Newsletter subscription popup
-- ⚡ Server-side rendering and static generation for performance
+-  Browse thousands of products across multiple categories
+-  Advanced search and filtering (by category, price range)
+-  Wishlist/Favorites management
+-  Shopping cart with persistent state
+-  Secure checkout with Paystack payment integration
+-  Fully responsive design (mobile, tablet, desktop)
+-  Modern UI with Tailwind CSS and Ant Design
+-  Cookie consent management
+-  Newsletter subscription popup
+-  Server-side rendering and static generation for performance
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **Framework**: [Next.js 16.2.4](https://nextjs.org/) - React meta-framework
@@ -48,7 +48,7 @@ Losode is a full-featured e-commerce application that showcases fashion products
 - **ESLint**: Code linting
 - **Babel Plugin React Compiler**: React 19 compiler plugin
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 losode-shop/
@@ -100,8 +100,6 @@ losode-shop/
 └── package.json                      # Dependencies & scripts
 ```
 
-## 📊 Data Models
-
 ### Product
 ```typescript
 interface Product {
@@ -131,7 +129,7 @@ interface CartItem {
 }
 ```
 
-## 🔌 API Integration
+## API Integration
 
 The application uses the **Escuelajs API** (`https://api.escuelajs.co/api/v1`) for product data.
 
@@ -157,7 +155,7 @@ Configured in `next.config.ts` to optimize images from multiple sources:
 - gqindia.com
 - Medium, Twitter, YouTube, and other common image hosts
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ (LTS recommended)
@@ -188,14 +186,14 @@ Configured in `next.config.ts` to optimize images from multiple sources:
    ```
    Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 📝 Available Scripts
+## Available Scripts
 
 - `npm run dev` - Start development server (with hot reload)
 - `npm run build` - Build for production
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint for code quality checks
 
-## 🎨 Design & Styling
+## Design & Styling
 
 ### Color Scheme
 - **Primary Accent**: `#C8A96E` (Gold)
@@ -210,7 +208,7 @@ Configured in `next.config.ts` to optimize images from multiple sources:
 
 The design uses Tailwind CSS utility classes with custom configurations and Ant Design components for consistency and accessibility.
 
-## 🔄 State Management Architecture
+## State Management Architecture
 
 ### Redux Store Structure
 ```
@@ -229,7 +227,7 @@ store/
 - Cart and favorites are persisted to `localStorage` using redux-persist
 - State rehydrates automatically on app startup
 
-## 🛒 Shopping Flow
+## Shopping Flow
 
 1. **Browse**: User lands on home page with featured products and categories
 2. **Explore**: Navigate to products page with advanced filtering options
@@ -241,7 +239,7 @@ store/
 8. **Payment**: Secure payment via Paystack
 9. **Confirmation**: Order success confirmation
 
-## 💳 Payment Integration
+## Payment Integration
 
 ### Paystack Configuration
 - Payment gateway: [Paystack](https://paystack.com/)
@@ -254,7 +252,7 @@ Environment variable required:
 NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 ```
 
-## 📱 Pages & Routes
+## Pages & Routes
 
 | Route | Component | Description |
 |-------|-----------|-------------|
@@ -265,7 +263,7 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 | `/checkout` | CheckoutPage | Payment & order completion |
 | `/favorites` | FavoritesPage | Wishlist/saved items |
 
-## 🎯 Key Features Explained
+## Key Features Explained
 
 ### Advanced Search
 - Real-time search with 300ms debouncing
@@ -299,7 +297,7 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 - Search bar with search icon toggle
 - Loading states and error boundaries
 
-## 🚀 Performance Optimizations
+## Performance Optimizations
 
 - **Image Optimization**: Next.js Image component with remote pattern configuration
 - **Caching**: React Query stale time configuration (categories cached indefinitely)
@@ -308,7 +306,7 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 - **Pagination**: Lazy-load products instead of loading all at once
 - **CSS**: Tailwind CSS with PostCSS purging
 
-## 🔐 Security Considerations
+## Security Considerations
 
 - Secure payment via Paystack (PCI compliant)
 - CORS handled by Next.js API routes
@@ -316,7 +314,7 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 - Content Security Policy for image SVG handling
 - Type-safe Redux and React code with TypeScript
 
-## 🐛 Known Limitations & TODOs
+## Known Limitations & TODOs
 
 - Products data source is external API (Escuelajs) - may have limited or test data
 - Payment functionality requires Paystack account setup
@@ -324,7 +322,7 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 - No order history tracking
 - No review/rating system yet
 
-## 📚 Dependencies Overview
+## Dependencies Overview
 
 ### Core
 - `next` - React meta-framework
@@ -346,8 +344,9 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 - `react-paystack` - Payment integration
 - `next-seo` - SEO optimization
 - `use-debounce` - Debounce utility
+- `npmrc` - Force dependecny on Netlify host
 
-## 📖 Learning Resources
+## Learning Resources
 
 - [Next.js 16 Documentation](https://nextjs.org/docs)
 - [React 19 Guide](https://react.dev)
@@ -356,17 +355,16 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Ant Design Documentation](https://ant.design/docs/react/introduce)
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to submit issues and enhancement requests!
 
-## 📄 License
+## License
 
 This project is open source. Check LICENSE file for details.
 
-## 👨‍💻 Author
-
-Built with ❤️ by the Losode team
+## Author
+Built by 266labs
 
 ---
 
