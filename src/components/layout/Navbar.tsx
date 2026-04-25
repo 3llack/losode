@@ -64,21 +64,18 @@ export default function Navbar() {
       </div>
 
       <header className="bg-[#1A1A1A] sticky top-0 z-50">
-        {/* Row 1: Gender tabs + Logo + Icons */}
+        {/* Row 1: Hamburger + Logo + Icons */}
         <div className="border-b border-white/10">
-          {/* Increased height on tablet (md) and desktop (lg) to fit bigger logo */}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20 lg:h-24">
-            
-            {/* LEFT SIDE: Mobile Hamburger OR Desktop Gender tabs */}
+
+            {/* LEFT: Mobile hamburger OR desktop gender tabs */}
             <div className="flex items-center gap-6">
-              {/* Mobile hamburger (Moved to left to balance layout) */}
               <button onClick={() => setMobileOpen(true)} className="text-white md:hidden" aria-label="Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
               </button>
 
-              {/* Gender tabs (Hidden on mobile to prevent logo overlap) */}
               <div className="hidden md:flex items-center gap-6">
                 {["Women", "Men", "Kids"].map(g => (
                   <Link
@@ -96,52 +93,48 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* CENTER: Logo (Responsive sizing) */}
+            {/* CENTER: Logo */}
             <Link href="/" className="absolute left-1/2 -translate-x-1/2">
               <Image
                 src="/og-image.png"
                 alt="Losode Logo"
-                width={100} // Increased base size
+                width={100}
                 height={100}
                 priority
-                // Scaling classes: w-12 on mobile, w-20 on tablet, w-24 on desktop
                 className="object-contain w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 transition-all duration-300"
               />
             </Link>
 
-            {/* RIGHT SIDE: Icons */}
-            <div className="flex items-center gap-4 md:gap-5">
-              {/* Search */}
-              {searchOpen ? (
-                <div className="flex items-center gap-2 border-b border-white/40 pb-0.5">
-                  <input
-                    ref={searchRef}
-                    value={searchVal}
-                    onChange={e => setSearchVal(e.target.value)}
-                    onKeyDown={e => {
-                      if (e.key === "Enter" && searchVal.trim()) {
-                        router.push(`/products?search=${encodeURIComponent(searchVal.trim())}`);
-                        setSearchOpen(false);
-                      }
-                      if (e.key === "Escape") { setSearchOpen(false); setSearchVal(""); }
-                    }}
-                    placeholder="Search..."
-                    className="bg-transparent text-white text-sm placeholder-gray-400 outline-none w-32 md:w-36"
-                  />
-                  <button onClick={() => { setSearchOpen(false); setSearchVal(""); }} className="text-gray-400 hover:text-white text-xs">✕</button>
-                </div>
-              ) : (
-                <button onClick={() => setSearchOpen(true)} className="text-white hover:text-[#C8A96E] transition-colors" aria-label="Search">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                </button>
-              )}
+            {/* RIGHT: Icons */}
+            <div className="flex items-center gap-3 md:gap-5">
 
-              {/* Account */}
-              <button className="text-white hover:text-[#C8A96E] transition-colors hidden sm:block" aria-label="Account">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              {/* Search icon — always visible, opens the bar below on ALL screen sizes */}
+              <button
+                onClick={() => setSearchOpen(v => !v)}
+                className="text-white hover:text-[#C8A96E] transition-colors"
+                aria-label="Search"
+              >
+                {searchOpen ? (
+                  /* X icon when open */
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                ) : (
+                  /* Magnifier */
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+                  </svg>
+                )}
               </button>
 
-              {/* Wishlist */}
+              {/* Account — desktop only */}
+              <button className="text-white hover:text-[#C8A96E] transition-colors hidden sm:block" aria-label="Account">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </button>
+
+              {/* Wishlist — shifted to the far right on mobile via ml-auto trick below */}
               <Link href="/favorites" className="text-white hover:text-[#C8A96E] transition-colors relative" aria-label="Wishlist">
                 <Badge count={favCount} size="small" color="#C8A96E" offset={[4, -4]}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
@@ -162,7 +155,41 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Row 2: Category nav */}
+        {/* ── Search bar — drops below the logo row on ALL screen sizes ── */}
+        {searchOpen && (
+          <div className="border-b border-white/10 bg-[#111111] px-4 sm:px-6 lg:px-8 py-3">
+            <div className="max-w-7xl mx-auto flex items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400 flex-shrink-0">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input
+                ref={searchRef}
+                value={searchVal}
+                onChange={e => setSearchVal(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === "Enter" && searchVal.trim()) {
+                    router.push(`/products?search=${encodeURIComponent(searchVal.trim())}`);
+                    setSearchOpen(false);
+                  }
+                  if (e.key === "Escape") { setSearchOpen(false); setSearchVal(""); }
+                }}
+                placeholder="Search for clothing, shoes, bags…"
+                className="flex-1 bg-transparent text-white text-sm placeholder-gray-500 outline-none"
+              />
+              {searchVal && (
+                <button
+                  onClick={() => setSearchVal("")}
+                  className="text-gray-500 hover:text-gray-300 text-xs transition-colors"
+                  aria-label="Clear"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Row 2: Category nav — desktop only */}
         <div className="hidden lg:block border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="flex items-center gap-6 h-10 overflow-x-auto scrollbar-hide">
@@ -188,13 +215,7 @@ export default function Navbar() {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={() => setMobileOpen(false)} />
           <div className="absolute left-0 top-0 bottom-0 w-72 bg-[#1A1A1A] flex flex-col shadow-2xl">
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-              <Image
-                src="/og-image.png"
-                alt="Losode Logo"
-                width={48}
-                height={48}
-                className="object-contain"
-              />
+              <Image src="/og-image.png" alt="Losode Logo" width={48} height={48} className="object-contain" />
               <button onClick={() => setMobileOpen(false)} className="text-gray-400 hover:text-white text-xl">✕</button>
             </div>
             <nav className="flex flex-col px-6 py-4 gap-5 overflow-y-auto">
