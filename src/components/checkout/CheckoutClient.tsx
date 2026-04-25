@@ -10,9 +10,7 @@ import {
   LockOutlined,
 } from "@ant-design/icons";
 
-/* ─────────────────────────────────────────────
-   Order Confirmation — shown after payment
-───────────────────────────────────────────── */
+
 function OrderConfirmation({
   reference,
   email,
@@ -27,7 +25,6 @@ function OrderConfirmation({
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md text-center">
-        {/* Animated check */}
         <div className="flex justify-center mb-6">
           <div className="w-20 h-20 rounded-full bg-[#C8A96E]/10 flex items-center justify-center">
             <CheckCircleFilled style={{ fontSize: 44, color: "#C8A96E" }} />
@@ -42,7 +39,6 @@ function OrderConfirmation({
           <span className="font-semibold text-gray-700">{email}</span>.
         </p>
 
-        {/* Order summary card */}
         <div className="bg-white border border-gray-100 rounded-2xl p-6 text-left mb-8 shadow-sm">
           <div className="space-y-3">
             <div className="flex justify-between text-sm">
@@ -78,9 +74,6 @@ function OrderConfirmation({
   );
 }
 
-/* ─────────────────────────────────────────────
-   Checkout Form
-───────────────────────────────────────────── */
 export default function CheckoutClient() {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -95,13 +88,12 @@ export default function CheckoutClient() {
   const [paidRef, setPaidRef] = useState("");
 
   const paystackConfig = {
-    reference: `losode_${Date.now()}`,
     email: email || "guest@losode.com",
-    amount: Math.round(total * 100), // Paystack uses kobo/cents
-    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY ?? "",
-    currency: "USD",
+    amount: Math.round(total * 100), 
+    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_KEY || "", 
+    currency: "NGN", // Change "USD" to "NGN"
     metadata: {
-      custom_fields: [{ display_name: "Name", variable_name: "name", value: name }],
+      custom_fields: [{ display_name: "Name", variable_name: "name", value: name || "Guest" }],
     },
   };
 
@@ -116,19 +108,22 @@ export default function CheckoutClient() {
     return true;
   };
 
+  const onSuccess = (response: { reference: string }) => {
+    dispatch(clearCart());
+    setPaidRef(response.reference);
+    setConfirmed(true);
+  };
+
+  const onClose = () => {
+    // Modal closed without completing
+  };
+
   const handlePay = () => {
     if (!validate()) return;
-
-    initializePayment({
-      onSuccess: (response: { reference: string }) => {
-        dispatch(clearCart());
-        setPaidRef(response.reference);
-        setConfirmed(true);
-      },
-      onClose: () => {
-        // Payment modal closed without completing — do nothing
-      },
-    });
+    if (total <= 0) return; // Strict block against empty checkouts
+    
+    // Pass callbacks wrapped in an object per the latest react-paystack requirements
+    initializePayment({ onSuccess, onClose });
   };
 
   // Empty cart guard
