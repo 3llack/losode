@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --font-playfair: "Playfair Display", serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --color-brand: #C8A96E;
+  --color-surface: #FAFAF8;
+  --color-ink: #1A1A1A;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-dm-sans);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display { font-family: var(--font-playfair) !important; }
+
+/* ── Hero full padding ── */
+section { width: 100%; }
+
+/* ── Ant Design resets ── */
+.ant-btn {
+  font-family: var(--font-dm-sans) !important;
+  font-weight: 600 !important;
+}
+.ant-btn-primary {
+  background-color: #1A1A1A !important;
+  border-color: #1A1A1A !important;
+  color: #fff !important;
+}
+.ant-btn-primary:hover {
+  background-color: #C8A96E !important;
+  border-color: #C8A96E !important;
+}
+.ant-select-selector {
+  border-radius: 12px !important;
+  border-color: #e5e7eb !important;
+}
+.ant-slider-track { background-color: #C8A96E !important; }
+.ant-slider-handle::after { 
+  box-shadow: 0 0 0 2px #C8A96E !important; 
+}
+.ant-input-affix-wrapper {
+  border-radius: 999px !important;
+  border-color: #e5e7eb !important;
+  background: #FAFAF8 !important;
+}
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+  border-color: #C8A96E !important;
+  box-shadow: 0 0 0 2px rgba(200,169,110,0.15) !important;
+}
+.ant-steps-item-process .ant-steps-item-icon {
+  background-color: #1A1A1A !important;
+  border-color: #1A1A1A !important;
+}
+.ant-steps-item-finish .ant-steps-item-icon {
+  border-color: #C8A96E !important;
+}
+.ant-steps-item-finish .ant-steps-item-icon .ant-steps-icon {
+  color: #C8A96E !important;
+}
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background-color: #C8A96E !important;
+}
+.ant-breadcrumb a:hover { color: #C8A96E !important; }
+.ant-message-notice-content {
+  border-radius: 12px !important;
+  font-family: var(--font-dm-sans) !important;
+}
