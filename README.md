@@ -43,6 +43,8 @@ Losode is a full-featured e-commerce application that showcases fashion products
 
 ### SEO & Meta
 - **next-seo**: 7.2.0 - SEO management for Next.js
+- **robots.ts**
+- **sitemap.ts**
 
 ### Development Tools
 - **ESLint**: Code linting
