@@ -51,35 +51,44 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Announcement bar */}
-      <div className="bg-white text-[#1A1A1A] text-center text-xs py-2 px-4">
-        New to Losode?{" "}
-        <Link href="/products" className="underline font-semibold hover:text-[#C8A96E]">
-          Subscribe
-        </Link>{" "}
-        and Get 10% off your first order
-        <span className="hidden sm:inline float-right pr-4 underline cursor-pointer hover:text-[#C8A96E]">
-          Sell On Losode
-        </span>
+      {/* Announcement bar — FIX: aligned to navbar max-width */}
+      <div className="bg-[#F5F5F3] md:bg-white text-[#1A1A1A] text-xs py-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <span>
+            New to Losode?{" "}
+            <Link href="/products" className="underline font-semibold hover:text-[#C8A96E]">
+              Subscribe
+            </Link>{" "}
+            and Get 10% off your first order
+          </span>
+          <span className="hidden sm:inline underline cursor-pointer hover:text-[#C8A96E]">
+            Sell On Losode
+          </span>
+        </div>
       </div>
 
-      <header className="bg-[#1A1A1A] sticky top-0 z-50">
-        <div className="border-b border-white/10">
+      {/* Header — dark on desktop, white on mobile */}
+      <header className="bg-white md:bg-[#1A1A1A] sticky top-0 z-50">
+        <div className="border-b border-gray-200 md:border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20 lg:h-24">
 
-            {/* LEFT: Hamburger + Favorites (mobile) | Gender tabs (desktop) */}
+            {/* LEFT */}
             <div className="flex items-center gap-4">
-              {/* Hamburger — mobile only */}
-              <button onClick={() => setMobileOpen(true)} className="text-white md:hidden" aria-label="Menu">
+              {/* Hamburger */}
+              <button
+                onClick={() => setMobileOpen(true)}
+                className="text-[#1A1A1A] md:text-white md:hidden"
+                aria-label="Menu"
+              >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
               </button>
 
-              {/* Favorites — mobile only, sits right beside hamburger */}
-              <Link href="/favorites" className="text-white hover:text-[#C8A96E] transition-colors md:hidden" aria-label="Wishlist">
+              {/* Favorites — mobile only */}
+              <Link href="/favorites" className="text-[#1A1A1A] hover:text-[#C8A96E] transition-colors md:hidden" aria-label="Wishlist">
                 <Badge count={favCount} size="small" color="#C8A96E" offset={[4, -4]}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                   </svg>
                 </Badge>
@@ -103,24 +112,34 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* CENTER: Logo */}
+            {/* CENTER: Logo — mobile uses losode-mob.png, desktop uses og-image.png */}
             <Link href="/" className="absolute left-1/2 -translate-x-1/2">
+              {/* Mobile logo */}
+              <Image
+                src="/losode-mob.png"
+                alt="Losode"
+                width={120}
+                height={40}
+                priority
+                className="block md:hidden object-contain h-8 w-auto"
+              />
+              {/* Desktop logo */}
               <Image
                 src="/og-image.png"
-                alt="Losode Logo"
+                alt="Losode"
                 width={100}
                 height={100}
                 priority
-                className="object-contain w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 transition-all duration-300"
+                className="hidden md:block object-contain w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 transition-all duration-300"
               />
             </Link>
 
-            {/* RIGHT: Search | Account | Favorites (desktop) | Cart */}
+            {/* RIGHT */}
             <div className="flex items-center gap-3 md:gap-5">
-              {/* Search icon */}
+              {/* Search */}
               <button
                 onClick={() => setSearchOpen(v => !v)}
-                className="text-white hover:text-[#C8A96E] transition-colors"
+                className="text-[#1A1A1A] md:text-white hover:text-[#C8A96E] transition-colors"
                 aria-label="Search"
               >
                 {searchOpen ? (
@@ -141,7 +160,7 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              {/* Favorites — desktop only (mobile version is in the left cluster) */}
+              {/* Favorites — desktop only */}
               <Link href="/favorites" className="text-white hover:text-[#C8A96E] transition-colors relative hidden md:block" aria-label="Wishlist">
                 <Badge count={favCount} size="small" color="#C8A96E" offset={[4, -4]}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
@@ -150,10 +169,10 @@ export default function Navbar() {
                 </Badge>
               </Link>
 
-              {/* Cart */}
-              <Link href="/cart" className="text-white hover:text-[#C8A96E] transition-colors" aria-label="Cart">
+              {/* Cart — FIX: className on svg fixes Badge breaking color inheritance */}
+              <Link href="/cart" className="text-[#1A1A1A] md:text-white hover:text-[#C8A96E] transition-colors" aria-label="Cart">
                 <Badge count={cartCount} size="small" color="#C8A96E" offset={[4, -4]}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#1A1A1A] md:text-white">
                     <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
                   </svg>
                 </Badge>
@@ -164,7 +183,7 @@ export default function Navbar() {
 
         {/* Search bar */}
         {searchOpen && (
-          <div className="border-b border-white/10 bg-[#111111] px-4 sm:px-6 lg:px-8 py-3">
+          <div className="border-b border-gray-200 md:border-white/10 bg-gray-50 md:bg-[#111111] px-4 sm:px-6 lg:px-8 py-3">
             <div className="max-w-7xl mx-auto flex items-center gap-3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400 flex-shrink-0">
                 <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -181,14 +200,10 @@ export default function Navbar() {
                   if (e.key === "Escape") { setSearchOpen(false); setSearchVal(""); }
                 }}
                 placeholder="Search for clothing, shoes, bags…"
-                className="flex-1 bg-transparent text-white text-sm placeholder-gray-500 outline-none"
+                className="flex-1 bg-transparent text-[#1A1A1A] md:text-white text-sm placeholder-gray-400 md:placeholder-gray-500 outline-none"
               />
               {searchVal && (
-                <button
-                  onClick={() => setSearchVal("")}
-                  className="text-gray-500 hover:text-gray-300 text-xs transition-colors"
-                  aria-label="Clear"
-                >
+                <button onClick={() => setSearchVal("")} className="text-gray-500 hover:text-gray-300 text-xs transition-colors">
                   Clear
                 </button>
               )}
@@ -219,7 +234,7 @@ export default function Navbar() {
       {/* Mobile drawer */}
       {mobileOpen && (
         <div className="fixed inset-0 z-[150] lg:hidden">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={() => setMobileOpen(false)} />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
           <div className="absolute left-0 top-0 bottom-0 w-72 bg-[#1A1A1A] flex flex-col shadow-2xl">
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
               <Image src="/og-image.png" alt="Losode Logo" width={48} height={48} className="object-contain" />
