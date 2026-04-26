@@ -23,7 +23,6 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      {/* <section className="relative bg-[#1A1A1A] text-white overflow-hidden"> */}
       <section className="relative bg-[#1A1A1A] text-white overflow-hidden min-h-[560px] flex items-center">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
           <div className="max-w-2xl">
@@ -38,7 +37,7 @@ export default function HomePage() {
             </h1>
             <p className="text-gray-400 text-lg mb-8 leading-relaxed">
               Discover curated fashion, electronics and lifestyle products
-              from the best brands — delivered to your door.
+              from the best brands - delivered to your door.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link href="/products">
@@ -173,7 +172,7 @@ export default function HomePage() {
             Free Shipping on All Orders
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Shop with confidence — no minimum order required.
+            Shop with confidence - no minimum order required.
           </p>
           <Link href="/products">
             <Button

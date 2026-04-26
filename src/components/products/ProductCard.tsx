@@ -2,7 +2,7 @@
 import { Product } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingCartOutlined, HeartOutlined, HeartFilled, DeleteOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, HeartOutlined, HeartFilled, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { addToCart, removeFromCart, selectIsInCart } from "@/store/cartSlice";
 import { toggleFavorite, selectIsFavorite } from "@/store/favoritesSlice";
@@ -50,7 +50,6 @@ export default function ProductCard({ product }: Props) {
       {contextHolder}
       <Link href={`/products/${product.id}`} className="group block">
         <div className="bg-white border border-gray-100 hover:border-gray-300 transition-colors duration-200">
-          {/* Image */}
           <div className="relative aspect-[3/4] overflow-hidden bg-gray-50">
             <Image
               src={imageUrl}
@@ -61,10 +60,11 @@ export default function ProductCard({ product }: Props) {
               onError={e => { (e.target as HTMLImageElement).src = "/placeholder.png"; }}
             />
 
+            {/* ── DESKTOP HOVER CONTROLS (md+) ── */}
             {/* Wishlist btn — top right, visible on hover */}
             <button
               onClick={handleFav}
-              className="absolute top-3 right-3 w-8 h-8 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+              className="absolute top-3 right-3 w-8 h-8 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex"
             >
               {isFavorite
                 ? <HeartFilled className="text-[#C8A96E] text-sm" />
@@ -72,7 +72,7 @@ export default function ProductCard({ product }: Props) {
             </button>
 
             {/* Add to bag — slide up on hover */}
-            <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block">
               <button
                 onClick={handleCart}
                 className={`w-full py-3 text-xs font-semibold tracking-widest uppercase flex items-center justify-center gap-2 transition-colors ${
@@ -84,6 +84,33 @@ export default function ProductCard({ product }: Props) {
                 {isInCart ? <><DeleteOutlined /> Remove</> : <><ShoppingCartOutlined /> Add to Bag</>}
               </button>
             </div>
+
+            {/* ── MOBILE / TABLET PERMANENT CONTROLS (below md) ── */}
+            {/* Heart — bottom left */}
+            <button
+              onClick={handleFav}
+              aria-label={isFavorite ? "Remove from wishlist" : "Save to wishlist"}
+              className="absolute bottom-2 left-2 w-9 h-9 rounded-full bg-white shadow flex items-center justify-center md:hidden active:scale-95 transition-transform"
+              style={{ touchAction: "manipulation" }}
+            >
+              {isFavorite
+                ? <HeartFilled style={{ fontSize: 15, color: "#C8A96E" }} />
+                : <HeartOutlined style={{ fontSize: 15, color: "#1A1A1A" }} />}
+            </button>
+
+            {/* Plus / add to cart — bottom right */}
+            <button
+              onClick={handleCart}
+              aria-label={isInCart ? "Remove from bag" : "Add to bag"}
+              className={`absolute bottom-2 right-2 w-9 h-9 rounded-full shadow flex items-center justify-center md:hidden active:scale-95 transition-transform ${
+                isInCart ? "bg-red-500 text-white" : "bg-[#1A1A1A] text-white"
+              }`}
+              style={{ touchAction: "manipulation" }}
+            >
+              {isInCart
+                ? <DeleteOutlined style={{ fontSize: 14 }} />
+                : <PlusOutlined style={{ fontSize: 14 }} />}
+            </button>
           </div>
 
           {/* Info */}

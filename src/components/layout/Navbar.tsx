@@ -52,7 +52,7 @@ export default function Navbar() {
   return (
     <>
       {/* Announcement bar */}
-      <div className="bg-[#1A1A1A] text-white text-center text-xs py-2 px-4">
+      <div className="bg-white text-[#1A1A1A] text-center text-xs py-2 px-4">
         New to Losode?{" "}
         <Link href="/products" className="underline font-semibold hover:text-[#C8A96E]">
           Subscribe
@@ -64,18 +64,28 @@ export default function Navbar() {
       </div>
 
       <header className="bg-[#1A1A1A] sticky top-0 z-50">
-        {/* Row 1: Hamburger + Logo + Icons */}
         <div className="border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20 lg:h-24">
 
-            {/* LEFT: Mobile hamburger OR desktop gender tabs */}
-            <div className="flex items-center gap-6">
+            {/* LEFT: Hamburger + Favorites (mobile) | Gender tabs (desktop) */}
+            <div className="flex items-center gap-4">
+              {/* Hamburger — mobile only */}
               <button onClick={() => setMobileOpen(true)} className="text-white md:hidden" aria-label="Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
                 </svg>
               </button>
 
+              {/* Favorites — mobile only, sits right beside hamburger */}
+              <Link href="/favorites" className="text-white hover:text-[#C8A96E] transition-colors md:hidden" aria-label="Wishlist">
+                <Badge count={favCount} size="small" color="#C8A96E" offset={[4, -4]}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                  </svg>
+                </Badge>
+              </Link>
+
+              {/* Gender tabs — desktop only */}
               <div className="hidden md:flex items-center gap-6">
                 {["Women", "Men", "Kids"].map(g => (
                   <Link
@@ -105,22 +115,19 @@ export default function Navbar() {
               />
             </Link>
 
-            {/* RIGHT: Icons */}
+            {/* RIGHT: Search | Account | Favorites (desktop) | Cart */}
             <div className="flex items-center gap-3 md:gap-5">
-
-              {/* Search icon — always visible, opens the bar below on ALL screen sizes */}
+              {/* Search icon */}
               <button
                 onClick={() => setSearchOpen(v => !v)}
                 className="text-white hover:text-[#C8A96E] transition-colors"
                 aria-label="Search"
               >
                 {searchOpen ? (
-                  /* X icon when open */
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
                   </svg>
                 ) : (
-                  /* Magnifier */
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                   </svg>
@@ -134,8 +141,8 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              {/* Wishlist — shifted to the far right on mobile via ml-auto trick below */}
-              <Link href="/favorites" className="text-white hover:text-[#C8A96E] transition-colors relative" aria-label="Wishlist">
+              {/* Favorites — desktop only (mobile version is in the left cluster) */}
+              <Link href="/favorites" className="text-white hover:text-[#C8A96E] transition-colors relative hidden md:block" aria-label="Wishlist">
                 <Badge count={favCount} size="small" color="#C8A96E" offset={[4, -4]}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
@@ -155,7 +162,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* ── Search bar — drops below the logo row on ALL screen sizes ── */}
+        {/* Search bar */}
         {searchOpen && (
           <div className="border-b border-white/10 bg-[#111111] px-4 sm:px-6 lg:px-8 py-3">
             <div className="max-w-7xl mx-auto flex items-center gap-3">
@@ -189,7 +196,7 @@ export default function Navbar() {
           </div>
         )}
 
-        {/* Row 2: Category nav — desktop only */}
+        {/* Category nav — desktop only */}
         <div className="hidden lg:block border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="flex items-center gap-6 h-10 overflow-x-auto scrollbar-hide">

@@ -13,14 +13,13 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://losode.netlify.app"), 
-  title: { default: "Losode - Fashion for Everyone", template: "%s | Losode" },
+  title: { default: "Losode Marketplace", template: "%s | Losode" },
   description: "Shop the latest fashion for men, women and kids. Free delivery on orders over $100.",
   keywords: ["fashion", "clothing", "shop", "losode", "online store"],
   
-  // 1. ADDED ICONS PROPERTY HERE
   icons: {
-    icon: "/og-image.png",
-    apple: "/og-image.png", // Ensures it looks good if saved to an iOS home screen
+    icon: "/favicon.png",
+    apple: "/og-image.png",
   },
 
   openGraph: {
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://losode.netlify.app",
     siteName: "Losode",
-    title: "Losode - Fashion for Everyone",
+    title: "Losode Marketplace",
     description: "Shop the latest fashion for men, women and kids.",
     images: [
       { 
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Losode - Fashion for Everyone",
+    title: "Losode Marketplace",
     description: "Shop the latest fashion for men, women and kids.",
     images: ["/og-image.png"],
   },
