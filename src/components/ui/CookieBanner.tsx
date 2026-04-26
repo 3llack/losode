@@ -5,15 +5,7 @@ export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie_consent");
-    if (!consent) {
-      // Register session timestamp
-      if (!sessionStorage.getItem("session_start")) {
-        sessionStorage.setItem("session_start", Date.now().toString());
-        sessionStorage.setItem("session_id", crypto.randomUUID());
-      }
-      setVisible(true);
-    }
+    if (!localStorage.getItem("cookie_consent")) setVisible(true);
   }, []);
 
   const accept = () => {
@@ -22,39 +14,40 @@ export default function CookieBanner() {
     setVisible(false);
   };
 
-  const decline = () => {
-    localStorage.setItem("cookie_consent", "declined");
-    setVisible(false);
-  };
-
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] p-6 sm:p-8">
-      <div className="max-w-3xl mx-auto bg-white border border-black shadow-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-        <div className="flex-1">
-          <p className="text-black font-semibold text-lg mb-2">We use cookies </p>
-          <p className="text-black text-base leading-relaxed">
-            We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept", you consent to our use of cookies.{" "}
-            <a href="/privacy" className="text-black underline">Privacy Policy</a>
-          </p>
-        </div>
-        <div className="flex gap-3 shrink-0">
-          <button
-            onClick={decline}
-            className="px-6 py-3 text-base font-semibold text-black border border-black hover:bg-gray-100 transition-colors"
-          >
-            Decline
-          </button>
+    <div className="fixed bottom-4 left-4 right-4 z-[100] bg-white border border-gray-200 shadow-lg">
+      <div className="max-w-5xl mx-auto px-6 sm:px-10 py-8">
+        {/* Title */}
+        <p className="text-xs font-bold uppercase tracking-widest text-[#1A1A1A] mb-4">
+          Cookies and Privacy
+        </p>
+
+        {/* Body text */}
+        <p className="text-sm text-[#1A1A1A] leading-relaxed mb-3">
+          Our site uses cookies and similar technologies to offer you a better experience. We use analytical
+          cookies (our own and third party) to understand and improve your browsing experience, and advertising
+          cookies (our own and third party) to send you advertisements in line with your preferences.
+        </p>
+        <p className="text-sm text-[#1A1A1A] leading-relaxed mb-6">
+          To modify or opt-out of the use of some or all of our cookies, please go to our{" "}
+          <a href="/privacy" className="underline text-[#1A1A1A] hover:text-[#C8A96E] transition-colors">
+            Cookie Policy
+          </a>{" "}
+          to find out more. By clicking "Accept" you consent to the use these cookies.
+        </p>
+
+        {/* Divider + Accept button — right-aligned like screenshot */}
+        <div className="border-t border-gray-200 pt-5 flex justify-end">
           <button
             onClick={accept}
-            className="px-6 py-3 text-base font-semibold bg-black text-white hover:bg-gray-800 transition-colors"
+            className="bg-[#1A1A1A] text-white px-10 py-3 text-sm font-semibold hover:bg-[#333] transition-colors"
           >
-            Accept All
+            Accept
           </button>
         </div>
       </div>
     </div>
   );
 }
-
