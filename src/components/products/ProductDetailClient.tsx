@@ -23,10 +23,10 @@ function getValidImages(images: string[]): string[] {
 }
 
 const DUMMY_RELATED = [
-  { href: "/products", image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80", brand: "House of Nwocha", title: "Adire Linen Co-ord Set", price: "₦38,500" },
-  { href: "/products", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", brand: "Style Temple Lagos", title: "Premium Ankara Blazer", price: "₦52,000" },
-  { href: "/products", image: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&q=80", brand: "Aso-Ebi Studio", title: "Yoruba Indigo Print Shirt", price: "₦29,500" },
-  { href: "/products", image: "https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?w=400&q=80", brand: "Uygonish Luxury", title: "Contemporary Agbada Set", price: "₦67,000" },
+  { href: "/products", image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80", brand: "House of Nwocha", title: "Adire Linen Co-ord Set", price: "$38,500" },
+  { href: "/products", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", brand: "Style Temple Lagos", title: "Premium Ankara Blazer", price: "$52,000" },
+  { href: "/products", image: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&q=80", brand: "Aso-Ebi Studio", title: "Yoruba Indigo Print Shirt", price: "$29,500" },
+  { href: "/products", image: "https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?w=400&q=80", brand: "Uygonish Luxury", title: "Contemporary Agbada Set", price: "$67,000" },
 ];
 
 export default function ProductDetailClient({ id }: { id: string }) {
@@ -150,7 +150,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
 
                 <div className="space-y-3">
                   {[
-                    { icon: <CarOutlined />, title: "Free Delivery", sub: "On orders over ₦50,000" },
+                    { icon: <CarOutlined />, title: "Free Delivery", sub: "On orders over $50,000" },
                     { icon: <UndoOutlined />, title: "Easy Returns", sub: "Amendments & Exchanges" },
                     { icon: <SafetyCertificateOutlined />, title: "Secure Payment", sub: "SSL encrypted checkout" },
                   ].map(({ icon, title, sub }) => (
@@ -363,7 +363,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
 
               <div className="space-y-3">
                 {[
-                  { icon: <CarOutlined />, title: "Free Delivery", sub: "On orders over ₦50,000" },
+                  { icon: <CarOutlined />, title: "Free Delivery", sub: "On orders over $5,000" },
                   { icon: <UndoOutlined />, title: "Easy Returns", sub: "Amendments & Exchanges" },
                   { icon: <SafetyCertificateOutlined />, title: "Secure Payment", sub: "SSL encrypted checkout" },
                 ].map(({ icon, title, sub }) => (
