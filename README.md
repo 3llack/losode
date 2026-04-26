@@ -69,10 +69,11 @@ losode-shop/
 │   │   ├── Providers.tsx             # Redux + React Query providers
 │   │   ├── layout/
 │   │   │   └── Navbar.tsx            # Navigation header
+│   │   │   └── Footer.tsx            # Navigation header
 │   │   ├── products/
 │   │   │   ├── page.tsx              # Products list component
 │   │   │   ├── ProductCard.tsx       # Product card component
-│   │   │   ├── ProductDetailClient.tsx
+│   │   │   ├── ProductDetailClient.tsx # Product details component
 │   │   │   ├── ProductFilters.tsx    # Category & price filters
 │   │   │   ├── ProductSkeleton.tsx   # Loading skeleton
 │   │   │   └── [id]/
@@ -83,6 +84,7 @@ losode-shop/
 │   │   └── ui/
 │   │       ├── CookieBanner.tsx      # Cookie consent banner
 │   │       └── NewsletterPopup.tsx   # Newsletter subscription
+│   │       └── ChatWidget.tsx   # Chatbo for fun
 │   ├── hooks/
 │   │   └── redux.ts                  # Redux typed hooks
 │   ├── lib/
