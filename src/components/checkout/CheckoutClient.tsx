@@ -74,9 +74,6 @@ function OrderConfirmation({
   );
 }
 
-/* ─────────────────────────────────────────────
-   Checkout Form
-───────────────────────────────────────────── */
 export default function CheckoutClient() {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -241,7 +238,7 @@ export default function CheckoutClient() {
               disabled={!email}
               className="w-full h-12 bg-[#1A1A1A] text-white rounded-lg text-sm font-semibold hover:bg-[#C8A96E] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              Pay N{total.toFixed(2)}
+              Pay ${total.toFixed(2)}
             </button>
           </div>
         </div>
