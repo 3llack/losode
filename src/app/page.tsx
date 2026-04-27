@@ -78,38 +78,28 @@ export default function HomePage() {
       {/* Hero Carousel */}
       <HeroCarousel />
 
-      {/* Categories */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <p className="text-xs font-medium text-[#C8A96E] uppercase tracking-widest mb-1">Browse</p>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#1A1A1A]">Shop by Category</h2>
-          </div>
-          <Link href="/products" className="text-sm text-gray-400 hover:text-[#C8A96E] transition-colors hidden sm:flex items-center gap-1">
-            View all <ArrowRightOutlined />
-          </Link>
-        </div>
-
-        {categoriesLoading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="h-24 bg-gray-100 rounded-2xl animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {categories?.slice(0, 5).map((category) => (
-              <Link key={category.id} href={`/products?categoryId=${category.id}`} className="group">
-                <div className="bg-white border border-gray-100 rounded-2xl p-5 text-center hover:border-[#C8A96E]/40 hover:shadow-md transition-all duration-300 cursor-pointer">
-                  <div className="w-10 h-10 bg-[#C8A96E]/10 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#C8A96E]/20 transition-colors">
-                    <span className="text-[#C8A96E] text-lg font-bold">{category.name.charAt(0).toUpperCase()}</span>
-                  </div>
-                  <p className="text-sm font-semibold text-gray-700 group-hover:text-[#C8A96E] transition-colors">{category.name}</p>
-                </div>
+      {/* Redesigned Categories Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-15">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A1A] tracking-tight mb-6">
+            Discover Fashion Without Limits,<br className="hidden md:block" /> 
+            from Signature Pieces to Sustainable Statements.
+          </h2>
+          <p className="max-w-3xl mx-auto text-gray-600 text-base sm:text-lg leading-relaxed">
+            Explore a world of style with hundreds of extravagant designers offering everything from 
+            subtle, sophisticated pieces to vibrant colors and daring, elaborate designs. 
+            Whether you are seeking timeless elegance or eye-catching fashion, 
+            we connect you with exclusive collections.
+          </p>
+          <div className="mt-10">
+              <Link 
+                href="/products" 
+                className="inline-block bg-black text-white px-12 py-4 text-sm font-bold uppercase tracking-[0.2em] hover:bg-gray-800 transition-all duration-300"
+              >
+                Shop Now
               </Link>
-            ))}
           </div>
-        )}
+        </div>
       </section>
 
       {/* Featured Products */}
