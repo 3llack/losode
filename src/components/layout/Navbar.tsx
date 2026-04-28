@@ -8,122 +8,33 @@ import { selectCartCount } from "@/store/cartSlice";
 import { selectFavoritesCount } from "@/store/favoritesSlice";
 import { useDebounce } from "use-debounce";
 import { Badge } from "antd";
+import navbarData from "@/json/navbar-data.json";
 
 type MegaKey = "Clothing" | "Shoes" | "Bags" | "Accessories" | "Beauty" | "Home" | "Designers" | "Shop By" | "New In" | null;
 
-const megaMenus: Record<string, {
-  col1?: { heading: string; items: { label: string; href: string; highlight?: boolean }[] };
-  col2?: { items: { label: string; href: string }[] };
-  col3?: { heading: string; items: { label: string; href: string }[] };
-  promo?: { image: string; title: string; subtitle: string; href: string };
-}> = {
-  Clothing: {
-    col1: {
-      heading: "CLOTHING",
-      items: [
-        { label: "All Clothing", href: "/products?category=1" },
-        { label: "New In Clothing", href: "/products?category=1&new=true" },
-        { label: "BouBous", href: "/products?category=1&sub=boubous" },
-        { label: "Co-ords", href: "/products?category=1&sub=coords", highlight: true },
-        { label: "Coats and Jackets", href: "/products?category=1&sub=coats" },
-        { label: "Dresses", href: "/products?category=1&sub=dresses" },
-        { label: "Hoodies and Sweatshirts", href: "/products?category=1&sub=hoodies" },
-        { label: "Jeans and Denim", href: "/products?category=1&sub=jeans" },
-        { label: "Joggers", href: "/products?category=1&sub=joggers" },
-        { label: "Jumpers and Cardigans", href: "/products?category=1&sub=jumpers" },
-        { label: "Jumpsuits and Playsuits", href: "/products?category=1&sub=jumpsuits" },
-        { label: "Kaftans and Danshikis", href: "/products?category=1&sub=kaftans" },
-        { label: "Kimonos", href: "/products?category=1&sub=kimonos" },
-      ],
-    },
-    col2: {
-      items: [
-        { label: "Leggings", href: "/products?category=1&sub=leggings" },
-        { label: "Lingerie and Nightwear", href: "/products?category=1&sub=lingerie" },
-        { label: "Loungewear", href: "/products?category=1&sub=loungewear" },
-        { label: "Multipacks", href: "/products?category=1&sub=multipacks" },
-        { label: "Shirts", href: "/products?category=1&sub=shirts" },
-        { label: "Shorts", href: "/products?category=1&sub=shorts" },
-        { label: "Skirts", href: "/products?category=1&sub=skirts" },
-        { label: "Socks and Tights", href: "/products?category=1&sub=socks" },
-        { label: "Sportswear", href: "/products?category=1&sub=sportswear" },
-        { label: "Suits and Tailoring", href: "/products?category=1&sub=suits" },
-        { label: "Swimwear and Beachwear", href: "/products?category=1&sub=swimwear" },
-        { label: "Tops and Blouses", href: "/products?category=1&sub=tops" },
-        { label: "Tracksuits", href: "/products?category=1&sub=tracksuits" },
-        { label: "Trousers", href: "/products?category=1&sub=trousers" },
-      ],
-    },
-    col3: {
-      heading: "DESIGNERS",
-      items: [
-        { label: "KOVVEX", href: "/products?designer=kovvex" },
-        { label: "SEAMED BY TEMMY", href: "/products?designer=seamed-by-temmy" },
-        { label: "URBAN MODESTEE", href: "/products?designer=urban-modestee" },
-        { label: "BESPOKE BY NURUDEEN", href: "/products?designer=bespoke-by-nurudeen" },
-        { label: "MELIRA", href: "/products?designer=melira" },
-        { label: "JEDA SANNI", href: "/products?designer=jeda-sanni" },
-        { label: "VELANTE", href: "/products?designer=velante" },
-        { label: "FABRIC FRENZY", href: "/products?designer=fabric-frenzy" },
-        { label: "ZICH COLLECTIONS LTD", href: "/products?designer=zich-collections" },
-        { label: "COBBY WOMAN", href: "/products?designer=cobby-woman" },
-      ],
-    },
-    promo: {
-      image: "/og-image.png",
-      title: "Style That Suits",
-      subtitle: "For every occasion",
-      href: "/products?category=1",
-    },
-  },
-  Shoes: {
-    col1: {
-      heading: "SHOES",
-      items: [
-        { label: "All Shoes", href: "/products?category=2" },
-        { label: "New In Shoes", href: "/products?category=2&new=true" },
-        { label: "Boots", href: "/products?category=2&sub=boots" },
-        { label: "Flats", href: "/products?category=2&sub=flats" },
-        { label: "Heels", href: "/products?category=2&sub=heels" },
-        { label: "Loafers", href: "/products?category=2&sub=loafers" },
-        { label: "Sandals", href: "/products?category=2&sub=sandals" },
-        { label: "Sneakers", href: "/products?category=2&sub=sneakers" },
-        { label: "Trainers", href: "/products?category=2&sub=trainers" },
-        { label: "Wedges", href: "/products?category=2&sub=wedges" },
-      ],
-    },
-    col3: {
-      heading: "DESIGNERS",
-      items: [
-        { label: "KOVVEX", href: "/products?designer=kovvex" },
-        { label: "MELIRA", href: "/products?designer=melira" },
-        { label: "VELANTE", href: "/products?designer=velante" },
-      ],
-    },
-    promo: { image: "/og-image.png", title: "Step Into Style", subtitle: "Latest arrivals", href: "/products?category=2" },
-  },
-  Bags: {
-    col1: {
-      heading: "BAGS",
-      items: [
-        { label: "All Bags", href: "/products?category=3" },
-        { label: "New In Bags", href: "/products?category=3&new=true" },
-        { label: "Backpacks", href: "/products?category=3&sub=backpacks" },
-        { label: "Clutches", href: "/products?category=3&sub=clutches" },
-        { label: "Crossbody Bags", href: "/products?category=3&sub=crossbody" },
-        { label: "Shoulder Bags", href: "/products?category=3&sub=shoulder" },
-        { label: "Tote Bags", href: "/products?category=3&sub=totes" },
-      ],
-    },
-    col3: {
-      heading: "DESIGNERS",
-      items: [
-        { label: "KOVVEX", href: "/products?designer=kovvex" },
-        { label: "JEDA SANNI", href: "/products?designer=jeda-sanni" },
-      ],
-    },
-    promo: { image: "/og-image.png", title: "Carry In Style", subtitle: "Curated bags", href: "/products?category=3" },
-  },
+type MenuItem = {
+  label: string;
+  href: string;
+  highlight?: boolean;
+};
+
+type MenuColumn = {
+  heading?: string;
+  items: MenuItem[];
+};
+
+type MenuPromo = {
+  href: string;
+  image: string;
+  title: string;
+  subtitle: string;
+};
+
+type MegaMenu = {
+  col1?: MenuColumn;
+  col2?: MenuColumn;
+  col3?: MenuColumn;
+  promo?: MenuPromo;
 };
 
 export default function Navbar() {
@@ -157,7 +68,7 @@ export default function Navbar() {
 
   const handleCatEnter = (label: string) => {
     if (leaveTimer.current) clearTimeout(leaveTimer.current);
-    if (megaMenus[label]) setActiveMenu(label as MegaKey);
+    if (label in navbarData.megaMenus) setActiveMenu(label as MegaKey);
     else setActiveMenu(null);
   };
 
@@ -169,40 +80,12 @@ export default function Navbar() {
     if (leaveTimer.current) clearTimeout(leaveTimer.current);
   };
 
-  const categories = [
-    { label: "Sale", href: "/products?sale=true", red: true },
-    { label: "New In", href: "/products?new=true" },
-    { label: "Shop By", href: "/products" },
-    { label: "Clothing", href: "/products?category=1" },
-    { label: "Shoes", href: "/products?category=2" },
-    { label: "Bags", href: "/products?category=3" },
-    { label: "Accessories", href: "/products?category=4" },
-    { label: "Beauty", href: "/products?category=5" },
-    { label: "Home", href: "/products?category=6" },
-    { label: "Designers", href: "/products" },
-    { label: "Sell On Losode", href: "/" },
-  ];
-
-  const drawerCategories = [
-    { label: "New In", href: "/products?new=true", hasPlus: false },
-    { label: "Shop By", href: "/products", hasPlus: true },
-    { label: "Clothing", href: "/products?category=1", hasPlus: true },
-    { label: "Shoes", href: "/products?category=2", hasPlus: true },
-    { label: "Bags", href: "/products?category=3", hasPlus: true },
-    { label: "Jewellery", href: "/products?category=7", hasPlus: true },
-    { label: "Beauty", href: "/products?category=5", hasPlus: true },
-    { label: "Accessories", href: "/products?category=4", hasPlus: true },
-    { label: "Home", href: "/products?category=6", hasPlus: true },
-    { label: "Designers", href: "/products", hasPlus: false },
-    { label: "SALE", href: "/products?sale=true", hasPlus: false, red: true },
-  ];
-
-  const menu = activeMenu ? megaMenus[activeMenu] : null;
+  const menu = activeMenu ? (navbarData.megaMenus as Record<string, MegaMenu>)[activeMenu] : null;
 
   return (
     <>
       {/* Announcement bar */}
-      <div className="bg-[#F5F5F3] md:bg-white text-[#1A1A1A] text-[14px] p-2">
+      <div className="bg-[#F5F5F3] md:bg-white text-[#1A1A1A] text-[12px] p-2">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-center justify-between">
           <span>
             New to Losode?{" "}
@@ -218,7 +101,7 @@ export default function Navbar() {
       </div>
 
       {/* Header */}
-      <header className="bg-white md:bg-[#1A1A1A] sticky top-0 z-50" onMouseLeave={handleCatLeave}>
+      <header className="bg-white md:bg-[#000] sticky top-0 z-50" onMouseLeave={handleCatLeave}>
 
         {/* Main header row — hidden when search is open */}
         {!searchOpen && (
@@ -366,10 +249,10 @@ export default function Navbar() {
                   <span className="text-base leading-none">🇳🇬</span>
                   <span className="text-[11px] font-semibold text-gray-300 tracking-widest">NGN</span>
                 </div>
-                {categories.map(c => (
+                {navbarData.categories.map(c => (
                   <div
                     key={c.label}
-                    onMouseEnter={() => handleCatEnter(c.label)}
+                    onMouseEnter={() => !c.noDropdown && handleCatEnter(c.label)}
                     className="relative h-full flex items-center"
                   >
                     <Link
@@ -429,7 +312,9 @@ export default function Navbar() {
                           <Link
                             href={item.href}
                             onClick={() => setActiveMenu(null)}
-                            className="text-[13px] leading-snug text-[#1A1A1A] transition-colors hover:text-[#C8A96E]"
+                            className={`text-[13px] leading-snug transition-colors hover:text-[#C8A96E] ${
+                              item.highlight ? "text-red-600 font-medium" : "text-[#1A1A1A]"
+                            }`}
                           >
                             {item.label}
                           </Link>
@@ -511,7 +396,7 @@ export default function Navbar() {
             </div>
 
             <nav className="flex flex-col overflow-y-auto flex-1">
-              {drawerCategories.map(c => (
+              {navbarData.drawerCategories.map(c => (
                 <Link
                   key={c.label}
                   href={c.href}

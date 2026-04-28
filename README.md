@@ -365,9 +365,10 @@ Feel free to submit issues and enhancement requests!
 
 ## License
 
-This project is open source. Check LICENSE file for details.
+This project is open source.
 
 ## Author
+
 Built by 266labs
 
 ---

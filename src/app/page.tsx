@@ -137,7 +137,7 @@ export default function HomePage() {
       <section className="bg-[#C8A96E] py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-4">Free Shipping on All Orders</h2>
-          <p className="text-white/80 mb-8 text-lg">Shop with confidence — no minimum order required.</p>
+          <p className="text-white/80 mb-8 text-lg">Shop with confidence - no minimum order required.</p>
           <Link href="/products">
             <Button size="large" className="h-12 px-8 rounded-full font-semibold bg-white text-[#C8A96E] border-white hover:bg-[#1A1A1A] hover:text-white hover:border-[#1A1A1A] transition-all">
               Start Shopping
