@@ -47,6 +47,22 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <>
+      <style>{`
+        /* Mobile + tablet (<1150px): permanent buttons, no hover overlay */
+        .pc-hover-fav    { display: none; }
+        .pc-hover-cart   { display: none; }
+        .pc-mobile-fav   { display: flex; }
+        .pc-mobile-cart  { display: flex; }
+
+        @media (min-width: 1150px) {
+          /* Desktop (900px+): hover overlay, hide permanent buttons */
+          .pc-hover-fav   { display: flex; }
+          .pc-hover-cart  { display: block; }
+          .pc-mobile-fav  { display: none; }
+          .pc-mobile-cart { display: none; }
+        }
+      `}</style>
+
       {contextHolder}
       <Link href={`/products/${product.id}`} className="group block">
         <div className="bg-white border border-gray-100 hover:border-gray-300 transition-colors duration-200">
@@ -60,19 +76,17 @@ export default function ProductCard({ product }: Props) {
               onError={e => { (e.target as HTMLImageElement).src = "/placeholder.png"; }}
             />
 
-            {/* ── DESKTOP HOVER CONTROLS (md+) ── */}
-            {/* Wishlist btn — top right, visible on hover */}
+            {/* ── DESKTOP HOVER CONTROLS (900px+) ── */}
             <button
               onClick={handleFav}
-              className="absolute top-3 right-3 w-8 h-8 bg-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hidden md:flex"
+              className="pc-hover-fav absolute top-3 right-3 w-8 h-8 bg-white items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
             >
               {isFavorite
                 ? <HeartFilled className="text-[#C8A96E] text-sm" />
                 : <HeartOutlined className="text-gray-600 text-sm" />}
             </button>
 
-            {/* Add to bag — slide up on hover */}
-            <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 hidden md:block">
+            <div className="pc-hover-cart absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
               <button
                 onClick={handleCart}
                 className={`w-full py-3 text-xs font-semibold tracking-widest uppercase flex items-center justify-center gap-2 transition-colors ${
@@ -85,12 +99,11 @@ export default function ProductCard({ product }: Props) {
               </button>
             </div>
 
-            {/* ── MOBILE / TABLET PERMANENT CONTROLS (below md) ── */}
-            {/* Heart — bottom left */}
+            {/* ── MOBILE + TABLET PERMANENT CONTROLS (<900px) ── */}
             <button
               onClick={handleFav}
               aria-label={isFavorite ? "Remove from wishlist" : "Save to wishlist"}
-              className="absolute bottom-2 left-2 w-9 h-9 rounded-full bg-white shadow flex items-center justify-center md:hidden active:scale-95 transition-transform"
+              className="pc-mobile-fav absolute bottom-2 left-2 w-9 h-9 rounded-full bg-white shadow items-center justify-center active:scale-95 transition-transform"
               style={{ touchAction: "manipulation" }}
             >
               {isFavorite
@@ -98,11 +111,10 @@ export default function ProductCard({ product }: Props) {
                 : <HeartOutlined style={{ fontSize: 15, color: "#1A1A1A" }} />}
             </button>
 
-            {/* Plus / add to cart — bottom right */}
             <button
               onClick={handleCart}
               aria-label={isInCart ? "Remove from bag" : "Add to bag"}
-              className={`absolute bottom-2 right-2 w-9 h-9 rounded-full shadow flex items-center justify-center md:hidden active:scale-95 transition-transform ${
+              className={`pc-mobile-cart absolute bottom-2 right-2 w-9 h-9 rounded-full shadow items-center justify-center active:scale-95 transition-transform ${
                 isInCart ? "bg-red-500 text-white" : "bg-[#1A1A1A] text-white"
               }`}
               style={{ touchAction: "manipulation" }}

@@ -83,9 +83,11 @@ export default function Footer() {
 
           {/* Col 3 — Logo + payments */}
           <div className="col-span-2 md:col-span-2 flex flex-col items-start md:items-end gap-6">
-            <span className="text-white font-serif text-4xl italic" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
-              losóde
-            </span>
+            <img
+              src="/og-image.png"
+              alt="Losode"
+              className="h-10 w-auto object-contain"
+            />
             <div>
               <p className="text-gray-400 text-xs mb-3 md:text-right">We accept payment from these providers:</p>
               <div className="flex items-center gap-2 flex-wrap">
