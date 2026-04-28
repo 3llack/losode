@@ -1,10 +1,10 @@
 # Losode - Fashion E-Commerce Store
 
-A modern, feature-rich e-commerce platform built with Next.js 16 and React 19. Losode offers a curated shopping experience for fashion and lifestyle products with advanced filtering, cart management, and secure payment integration.
+A modern, feature-rich e-commerce platform built with Next.js 16 and React 19. Losode offers a curated shopping experience for fashion and lifestyle products with advanced filtering, cart management, and secure payment integration. This is strictyly for skill assessment purposes.
 
 ## Overview
 
-Losode is a full-featured e-commerce application that showcases fashion products with an intuitive user interface. The platform integrates with external APIs to fetch product data and supports secure online payments through Paystack.
+Losode is a full-featured e-commerce application that showcases fashion products with an intuitive user interface. The platform integrates with an external free API to fetch product data and supports secure online payments through Paystack.
 
 **Live Features:**
 -  Browse thousands of products across multiple categories
@@ -84,9 +84,11 @@ losode-shop/
 │   │   └── ui/
 │   │       ├── CookieBanner.tsx      # Cookie consent banner
 │   │       └── NewsletterPopup.tsx   # Newsletter subscription
-│   │       └── ChatWidget.tsx   # Chatbo for fun
+│   │       └── ChatWidget.tsx        # Chatbot for fun
 │   ├── hooks/
 │   │   └── redux.ts                  # Redux typed hooks
+│   ├── json/
+│   │   └── navbar-data.json          # Data for navbar
 │   ├── lib/
 │   │   └── api.ts                    # API client functions
 │   ├── store/
@@ -95,7 +97,7 @@ losode-shop/
 │   │   └── favoritesSlice.ts         # Favorites state & reducers
 │   └── types/
 │       └── index.ts                  # TypeScript interfaces
-├── public/                            # Static assets
+├── public/                           # Static assets
 ├── next.config.ts                    # Next.js configuration
 ├── tailwind.config.js                # Tailwind CSS config
 ├── tsconfig.json                     # TypeScript config
@@ -152,12 +154,8 @@ The application uses the **Escuelajs API** (`https://api.escuelajs.co/api/v1`) f
 
 ### Remote Image Patterns
 
-Configured in `next.config.ts` to optimize images from multiple sources:
-- api.escuelajs.co
-- imgur.com
-- unsplash.com
-- gqindia.com
-- Medium, Twitter, YouTube, and other common image hosts
+Configured in `next.config.ts` to optimize images from any source:
+- https://**
 
 ## Getting Started
 
@@ -169,13 +167,13 @@ Configured in `next.config.ts` to optimize images from multiple sources:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/losode-shop.git
+   git clone https://github.com/3llack/losode-shop.git
    cd losode-shop
    ```
 
 2. **Install dependencies**
    ```bash
-   npm install
+   npm install or npm i
    ```
 
 3. **Set up environment variables** (optional for Paystack)
@@ -188,7 +186,7 @@ Configured in `next.config.ts` to optimize images from multiple sources:
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+   Open [http://localhost:3000] or [http://localhost:3001] in your browser.
 
 ## Available Scripts
 
@@ -201,14 +199,14 @@ Configured in `next.config.ts` to optimize images from multiple sources:
 
 ### Color Scheme
 - **Primary Accent**: `#C8A96E` (Gold)
-- **Dark Background**: `#1A1A1A` (Charcoal)
+- **Dark Background**: `#000000` (Charcoal)
 - **Light Background**: `#FAFAF8` (Off-white)
 - **Text**: Black, White, Gray variants
 
 ### Responsive Breakpoints
 - Mobile: < 640px
-- Tablet: 640px - 1024px
-- Desktop: > 1024px
+- Tablet: 640px - 1150px
+- Desktop: > 1200px
 
 The design uses Tailwind CSS utility classes with custom configurations and Ant Design components for consistency and accessibility.
 
@@ -248,7 +246,7 @@ store/
 ### Paystack Configuration
 - Payment gateway: [Paystack](https://paystack.com/)
 - Integration: `react-paystack` library
-- Supported currencies: USD
+- Supported currencies: NGN
 - Reference format: `losode_[timestamp]`
 
 Environment variable required:
@@ -282,7 +280,7 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 
 ### Product Display
 - Pagination: 12 products per page
-- Responsive grid: 2 columns (mobile) → 3 columns (tablet) → 4 columns (desktop)
+- Responsive grid: 2 columns (mobile) → 3-4 columns (tablet) → 4 columns (desktop)
 - Loading skeletons for better UX
 - Error handling with user-friendly messages
 
@@ -320,11 +318,13 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 
 ## Known Limitations & TODOs
 
-- Products data source is external API (Escuelajs) - may have limited or test data
+- Products data source is external API (Escuelajs) - test data
+- Products details defaults to custom page (API returns product not found)
 - Payment functionality requires Paystack account setup
-- No authentication/user accounts (could be added)
+- No authentication/user accounts (no backend/db setup)
 - No order history tracking
 - No review/rating system yet
+- No privacy policy
 
 ## Dependencies Overview
 
@@ -361,11 +361,12 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 
 ## Contributing
 
-Feel free to submit issues and enhancement requests!
+---
 
 ## License
 
-This project is open source.
+This project is for an assessment and not intended to clone or fake as the official Losode company, sub companies or entity. 
+Pay attention to the URL details (https://losode.netlify.app)
 
 ## Author
 
