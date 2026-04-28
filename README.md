@@ -1,6 +1,6 @@
 # Losode - Fashion E-Commerce Store
 
-A modern, feature-rich e-commerce platform built with Next.js 16 and React 19. Losode offers a curated shopping experience for fashion and lifestyle products with advanced filtering, cart management, and secure payment integration. This is strictyly for skill assessment purposes.
+A modern, feature-rich e-commerce platform built with Next.js 16 and React 19. Losode offers a curated shopping experience for fashion and lifestyle products with advanced filtering, cart management, and secure payment integration. This is strictly for skill assessment purposes.
 
 ## Overview
 
@@ -358,10 +358,6 @@ NEXT_PUBLIC_PAYSTACK_KEY=pk_test_xxxxxxxxxxxxx
 - [React Query Documentation](https://tanstack.com/query/latest)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [Ant Design Documentation](https://ant.design/docs/react/introduce)
-
-## Contributing
-
----
 
 ## License
 
