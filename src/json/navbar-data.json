@@ -1,0 +1,333 @@
+{
+  "megaMenus": {
+    "New In": {
+      "col1": {
+        "heading": "NEW ARRIVALS",
+        "items": [
+          { "label": "All New In", "href": "/products?new=true" },
+          { "label": "New In Clothing", "href": "/products?category=1&new=true" },
+          { "label": "New In Shoes", "href": "/products?category=2&new=true" },
+          { "label": "New In Bags", "href": "/products?category=3&new=true" },
+          { "label": "New In Accessories", "href": "/products?category=4&new=true" },
+          { "label": "New In Beauty", "href": "/products?category=5&new=true" }
+        ]
+      },
+      "col3": {
+        "heading": "TRENDING NOW",
+        "items": [
+          { "label": "Best Sellers", "href": "/products?sort=bestsellers" },
+          { "label": "Editor's Picks", "href": "/products?editors=true" },
+          { "label": "Most Loved", "href": "/products?sort=mostloved" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Fresh Arrivals",
+        "subtitle": "Discover what's new",
+        "href": "/products?new=true"
+      }
+    },
+    "Shop By": {
+      "col1": {
+        "heading": "SHOP BY CATEGORY",
+        "items": [
+          { "label": "All Products", "href": "/products" },
+          { "label": "Clothing", "href": "/products?category=1" },
+          { "label": "Shoes", "href": "/products?category=2" },
+          { "label": "Bags", "href": "/products?category=3" },
+          { "label": "Accessories", "href": "/products?category=4" },
+          { "label": "Beauty", "href": "/products?category=5" },
+          { "label": "Home", "href": "/products?category=6" },
+          { "label": "Jewellery", "href": "/products?category=7" }
+        ]
+      },
+      "col2": {
+        "items": [
+          { "label": "Best Sellers", "href": "/products?sort=bestsellers" },
+          { "label": "Trending Now", "href": "/products?trending=true" },
+          { "label": "Editor's Picks", "href": "/products?editors=true" },
+          { "label": "Sale Items", "href": "/products?sale=true" },
+          { "label": "Gift Ideas", "href": "/products?gifts=true" },
+          { "label": "Seasonal Collection", "href": "/products?seasonal=true" }
+        ]
+      },
+      "col3": {
+        "heading": "SHOP BY PRICE",
+        "items": [
+          { "label": "Under ₦10,000", "href": "/products?price=0-10000" },
+          { "label": "₦10,000 - ₦25,000", "href": "/products?price=10000-25000" },
+          { "label": "₦25,000 - ₦50,000", "href": "/products?price=25000-50000" },
+          { "label": "Over ₦50,000", "href": "/products?price=50000+" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Explore Collections",
+        "subtitle": "Find your perfect style",
+        "href": "/products"
+      }
+    },
+    "Clothing": {
+      "col1": {
+        "heading": "CLOTHING",
+        "items": [
+          { "label": "All Clothing", "href": "/products?category=1" },
+          { "label": "New In Clothing", "href": "/products?category=1&new=true" },
+          { "label": "BouBous", "href": "/products?category=1&sub=boubous" },
+          { "label": "Co-ords", "href": "/products?category=1&sub=coords", "highlight": true },
+          { "label": "Coats and Jackets", "href": "/products?category=1&sub=coats" },
+          { "label": "Dresses", "href": "/products?category=1&sub=dresses" },
+          { "label": "Hoodies and Sweatshirts", "href": "/products?category=1&sub=hoodies" },
+          { "label": "Jeans and Denim", "href": "/products?category=1&sub=jeans" },
+          { "label": "Joggers", "href": "/products?category=1&sub=joggers" },
+          { "label": "Jumpers and Cardigans", "href": "/products?category=1&sub=jumpers" },
+          { "label": "Jumpsuits and Playsuits", "href": "/products?category=1&sub=jumpsuits" },
+          { "label": "Kaftans and Danshikis", "href": "/products?category=1&sub=kaftans" },
+          { "label": "Kimonos", "href": "/products?category=1&sub=kimonos" }
+        ]
+      },
+      "col2": {
+        "items": [
+          { "label": "Leggings", "href": "/products?category=1&sub=leggings" },
+          { "label": "Lingerie and Nightwear", "href": "/products?category=1&sub=lingerie" },
+          { "label": "Loungewear", "href": "/products?category=1&sub=loungewear" },
+          { "label": "Multipacks", "href": "/products?category=1&sub=multipacks" },
+          { "label": "Shirts", "href": "/products?category=1&sub=shirts" },
+          { "label": "Shorts", "href": "/products?category=1&sub=shorts" },
+          { "label": "Skirts", "href": "/products?category=1&sub=skirts" },
+          { "label": "Socks and Tights", "href": "/products?category=1&sub=socks" },
+          { "label": "Sportswear", "href": "/products?category=1&sub=sportswear" },
+          { "label": "Suits and Tailoring", "href": "/products?category=1&sub=suits" },
+          { "label": "Swimwear and Beachwear", "href": "/products?category=1&sub=swimwear" },
+          { "label": "Tops and Blouses", "href": "/products?category=1&sub=tops" },
+          { "label": "Tracksuits", "href": "/products?category=1&sub=tracksuits" },
+          { "label": "Trousers", "href": "/products?category=1&sub=trousers" }
+        ]
+      },
+      "col3": {
+        "heading": "DESIGNERS",
+        "items": [
+          { "label": "KOVVEX", "href": "/products?designer=kovvex" },
+          { "label": "SEAMED BY TEMMY", "href": "/products?designer=seamed-by-temmy" },
+          { "label": "URBAN MODESTEE", "href": "/products?designer=urban-modestee" },
+          { "label": "BESPOKE BY NURUDEEN", "href": "/products?designer=bespoke-by-nurudeen" },
+          { "label": "MELIRA", "href": "/products?designer=melira" },
+          { "label": "JEDA SANNI", "href": "/products?designer=jeda-sanni" },
+          { "label": "VELANTE", "href": "/products?designer=velante" },
+          { "label": "FABRIC FRENZY", "href": "/products?designer=fabric-frenzy" },
+          { "label": "ZICH COLLECTIONS LTD", "href": "/products?designer=zich-collections" },
+          { "label": "COBBY WOMAN", "href": "/products?designer=cobby-woman" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Style That Suits",
+        "subtitle": "For every occasion",
+        "href": "/products?category=1"
+      }
+    },
+    "Shoes": {
+      "col1": {
+        "heading": "SHOES",
+        "items": [
+          { "label": "All Shoes", "href": "/products?category=2" },
+          { "label": "New In Shoes", "href": "/products?category=2&new=true" },
+          { "label": "Boots", "href": "/products?category=2&sub=boots" },
+          { "label": "Flats", "href": "/products?category=2&sub=flats" },
+          { "label": "Heels", "href": "/products?category=2&sub=heels" },
+          { "label": "Loafers", "href": "/products?category=2&sub=loafers" },
+          { "label": "Sandals", "href": "/products?category=2&sub=sandals" },
+          { "label": "Sneakers", "href": "/products?category=2&sub=sneakers" },
+          { "label": "Trainers", "href": "/products?category=2&sub=trainers" },
+          { "label": "Wedges", "href": "/products?category=2&sub=wedges" }
+        ]
+      },
+      "col3": {
+        "heading": "DESIGNERS",
+        "items": [
+          { "label": "KOVVEX", "href": "/products?designer=kovvex" },
+          { "label": "MELIRA", "href": "/products?designer=melira" },
+          { "label": "VELANTE", "href": "/products?designer=velante" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Step Into Style",
+        "subtitle": "Latest arrivals",
+        "href": "/products?category=2"
+      }
+    },
+    "Bags": {
+      "col1": {
+        "heading": "BAGS",
+        "items": [
+          { "label": "All Bags", "href": "/products?category=3" },
+          { "label": "New In Bags", "href": "/products?category=3&new=true" },
+          { "label": "Backpacks", "href": "/products?category=3&sub=backpacks" },
+          { "label": "Clutches", "href": "/products?category=3&sub=clutches" },
+          { "label": "Crossbody Bags", "href": "/products?category=3&sub=crossbody" },
+          { "label": "Shoulder Bags", "href": "/products?category=3&sub=shoulder" },
+          { "label": "Tote Bags", "href": "/products?category=3&sub=totes" }
+        ]
+      },
+      "col3": {
+        "heading": "DESIGNERS",
+        "items": [
+          { "label": "KOVVEX", "href": "/products?designer=kovvex" },
+          { "label": "JEDA SANNI", "href": "/products?designer=jeda-sanni" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Carry In Style",
+        "subtitle": "Curated bags",
+        "href": "/products?category=3"
+      }
+    },
+    "Accessories": {
+      "col1": {
+        "heading": "ACCESSORIES",
+        "items": [
+          { "label": "All Accessories", "href": "/products?category=4" },
+          { "label": "New In Accessories", "href": "/products?category=4&new=true" },
+          { "label": "Belts", "href": "/products?category=4&sub=belts" },
+          { "label": "Hats and Caps", "href": "/products?category=4&sub=hats" },
+          { "label": "Scarves", "href": "/products?category=4&sub=scarves" },
+          { "label": "Sunglasses", "href": "/products?category=4&sub=sunglasses" },
+          { "label": "Watches", "href": "/products?category=4&sub=watches" },
+          { "label": "Hair Accessories", "href": "/products?category=4&sub=hair" }
+        ]
+      },
+      "col3": {
+        "heading": "TRENDING",
+        "items": [
+          { "label": "Statement Pieces", "href": "/products?category=4&trending=true" },
+          { "label": "Everyday Essentials", "href": "/products?category=4&essentials=true" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Complete Your Look",
+        "subtitle": "Perfect accessories",
+        "href": "/products?category=4"
+      }
+    },
+    "Beauty": {
+      "col1": {
+        "heading": "BEAUTY",
+        "items": [
+          { "label": "All Beauty", "href": "/products?category=5" },
+          { "label": "New In Beauty", "href": "/products?category=5&new=true" },
+          { "label": "Skincare", "href": "/products?category=5&sub=skincare" },
+          { "label": "Makeup", "href": "/products?category=5&sub=makeup" },
+          { "label": "Haircare", "href": "/products?category=5&sub=haircare" },
+          { "label": "Fragrance", "href": "/products?category=5&sub=fragrance" },
+          { "label": "Bath and Body", "href": "/products?category=5&sub=bath" },
+          { "label": "Beauty Tools", "href": "/products?category=5&sub=tools" }
+        ]
+      },
+      "col3": {
+        "heading": "FEATURED BRANDS",
+        "items": [
+          { "label": "Local Brands", "href": "/products?category=5&local=true" },
+          { "label": "International Brands", "href": "/products?category=5&international=true" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Glow Up",
+        "subtitle": "Beauty essentials",
+        "href": "/products?category=5"
+      }
+    },
+    "Home": {
+      "col1": {
+        "heading": "HOME",
+        "items": [
+          { "label": "All Home", "href": "/products?category=6" },
+          { "label": "New In Home", "href": "/products?category=6&new=true" },
+          { "label": "Bedding", "href": "/products?category=6&sub=bedding" },
+          { "label": "Bath", "href": "/products?category=6&sub=bath" },
+          { "label": "Decor", "href": "/products?category=6&sub=decor" },
+          { "label": "Kitchen", "href": "/products?category=6&sub=kitchen" },
+          { "label": "Storage", "href": "/products?category=6&sub=storage" }
+        ]
+      },
+      "col3": {
+        "heading": "COLLECTIONS",
+        "items": [
+          { "label": "Modern Minimal", "href": "/products?category=6&style=minimal" },
+          { "label": "Bohemian", "href": "/products?category=6&style=boho" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Transform Your Space",
+        "subtitle": "Home essentials",
+        "href": "/products?category=6"
+      }
+    },
+    "Designers": {
+      "col1": {
+        "heading": "FEATURED DESIGNERS",
+        "items": [
+          { "label": "All Designers", "href": "/products" },
+          { "label": "KOVVEX", "href": "/products?designer=kovvex" },
+          { "label": "SEAMED BY TEMMY", "href": "/products?designer=seamed-by-temmy" },
+          { "label": "URBAN MODESTEE", "href": "/products?designer=urban-modestee" },
+          { "label": "BESPOKE BY NURUDEEN", "href": "/products?designer=bespoke-by-nurudeen" },
+          { "label": "MELIRA", "href": "/products?designer=melira" },
+          { "label": "JEDA SANNI", "href": "/products?designer=jeda-sanni" }
+        ]
+      },
+      "col2": {
+        "items": [
+          { "label": "VELANTE", "href": "/products?designer=velante" },
+          { "label": "FABRIC FRENZY", "href": "/products?designer=fabric-frenzy" },
+          { "label": "ZICH COLLECTIONS LTD", "href": "/products?designer=zich-collections" },
+          { "label": "COBBY WOMAN", "href": "/products?designer=cobby-woman" },
+          { "label": "View All Designers", "href": "/products", "highlight": true }
+        ]
+      },
+      "col3": {
+        "heading": "EMERGING TALENT",
+        "items": [
+          { "label": "New Designers", "href": "/products?designers=new" },
+          { "label": "Local Creators", "href": "/products?designers=local" }
+        ]
+      },
+      "promo": {
+        "image": "/og-image.png",
+        "title": "Meet The Designers",
+        "subtitle": "Discover unique styles",
+        "href": "/products"
+      }
+    }
+  },
+  "categories": [
+    { "label": "Sale", "href": "/products?sale=true", "red": true, "noDropdown": true },
+    { "label": "New In", "href": "/products?new=true" },
+    { "label": "Shop By", "href": "/products" },
+    { "label": "Clothing", "href": "/products?category=1" },
+    { "label": "Shoes", "href": "/products?category=2" },
+    { "label": "Bags", "href": "/products?category=3" },
+    { "label": "Accessories", "href": "/products?category=4" },
+    { "label": "Beauty", "href": "/products?category=5" },
+    { "label": "Home", "href": "/products?category=6" },
+    { "label": "Designers", "href": "/products" },
+    { "label": "Sell On Losode", "href": "/", "noDropdown": true }
+  ],
+  "drawerCategories": [
+    { "label": "New In", "href": "/products?new=true", "hasPlus": false },
+    { "label": "Shop By", "href": "/products", "hasPlus": true },
+    { "label": "Clothing", "href": "/products?category=1", "hasPlus": true },
+    { "label": "Shoes", "href": "/products?category=2", "hasPlus": true },
+    { "label": "Bags", "href": "/products?category=3", "hasPlus": true },
+    { "label": "Jewellery", "href": "/products?category=7", "hasPlus": true },
+    { "label": "Beauty", "href": "/products?category=5", "hasPlus": true },
+    { "label": "Accessories", "href": "/products?category=4", "hasPlus": true },
+    { "label": "Home", "href": "/products?category=6", "hasPlus": true },
+    { "label": "Designers", "href": "/products", "hasPlus": false },
+    { "label": "SALE", "href": "/products?sale=true", "hasPlus": false, "red": true }
+  ]
+}
